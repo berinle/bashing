@@ -12,6 +12,7 @@ echo "
 [6] eras-parent
 [7] eras-pdws-web
 [8] eras-persistence
+[9] aamc-commons
 
 Which project do you want to update?:"
 
@@ -34,6 +35,8 @@ read p
 		PROJECT="eras-pdws-web"
 	elif [ "$p" == "8" ]; then
 		PROJECT="eras-persistence"
+	elif [ "$p" == "9" ]; then
+		PROJECT="aamc-commons"	
 	else
 		echo "nothing to do!"		
 	fi

@@ -1,7 +1,6 @@
 #!/bin/bash
 # http://stackoverflow.com/questions/59838/how-to-check-if-a-directory-exists-in-a-bash-shell-script
 # http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html
-#http://stackoverflow.com/questions/5665169/looping-through-directories-in-bash
 
 echo " 
 [1] eras-commons
@@ -12,6 +11,7 @@ echo "
 [6] eras-parent
 [7] eras-pdws-web
 [8] eras-persistence
+[9] aamc-commons
 
 Which project do you want to commit?:"
 
@@ -36,6 +36,8 @@ read p
 		PROJECT="eras-pdws-web"
 	elif [ "$p" == "8" ]; then
 		PROJECT="eras-persistence"
+	elif [ "$p" == "9" ]; then
+		PROJECT="aamc-commons"		
 	else
 		echo "nothing to do!"		
 	fi
@@ -45,7 +47,7 @@ read p
 		cd "$PROJECT"
 		git stash
 		git svn rebase
-		git svn dcommit -n 
+		git svn dcommit 
 		git stash pop
 		cd ..
 	fi
