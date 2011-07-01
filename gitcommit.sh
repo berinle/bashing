@@ -56,7 +56,7 @@ for i in "${p[@]}"; do
   	cd "$PROJECT"
   	#git ci --dry-run -m "${m}"
   	git ci -m "${m}"
-	echo "Done commiting changes for [$PROJECT] ...\n"
+	echo -e "Done commiting changes for [$PROJECT] ...\n"
   	cd ..
   fi
   
