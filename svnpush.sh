@@ -30,7 +30,6 @@ read p
 	elif [ "$p" == "5" ]; then
 		PROJECT="eras-document-service-commons"
 	elif [ "$p" == "6" ]; then
-		#PROJECT="/Users/berinle/projects/gitrepo/aamc/eras-parent"
 		PROJECT="eras-parent"
 	elif [ "$p" == "7" ]; then
 		PROJECT="eras-pdws-web"
