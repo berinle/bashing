@@ -13,47 +13,53 @@ echo "
 [8] eras-persistence
 [9] aamc-commons
 
-Which project do you want to commit?:"
+Which project do you want to push to SVN? (comma seperate for multiple projects):"
 
 PROJECT=""
-# echo "$PROJECT"
-read p
+read IN
 
-	if [ "$p" == "1" ]; then
+IFS=',' read -ra p <<< "$IN"
+for i in "${p[@]}"; do
+
+	if [ "$i" == "1" ]; then
 		PROJECT="eras-commons"
-	elif [ "$p" == "2" ]; then
+	elif [ "$i" == "2" ]; then
 		PROJECT="eras-core-service"
-	elif [ "$p" == "3" ]; then
+	elif [ "$i" == "3" ]; then
 		PROJECT="eras-core-service-commons"
-	elif [ "$p" == "4" ]; then
+	elif [ "$i" == "4" ]; then
 		PROJECT="eras-document-service"
-	elif [ "$p" == "5" ]; then
+	elif [ "$i" == "5" ]; then
 		PROJECT="eras-document-service-commons"
-	elif [ "$p" == "6" ]; then
+	elif [ "$i" == "6" ]; then
 		PROJECT="eras-parent"
-	elif [ "$p" == "7" ]; then
+	elif [ "$i" == "7" ]; then
 		PROJECT="eras-pdws-web"
-	elif [ "$p" == "8" ]; then
+	elif [ "$i" == "8" ]; then
 		PROJECT="eras-persistence"
-	elif [ "$p" == "9" ]; then
+	elif [ "$i" == "9" ]; then
 		PROJECT="aamc-commons"		
 	else
 		echo "nothing to do!"		
 	fi
 	
 	if [ -d "$PROJECT" ]; then
-		echo "commiting changes for $PROJECT ..."
+		echo -e "Pushing changes to SVN for [$PROJECT] ...\n"
 		cd "$PROJECT"
 		git stash
 		git svn rebase
-		git svn dcommit 
+		#git svn dcommit -n ## do dry run
+		git svn dcommit
 		git stash pop
+		echo -e "Done pushing changes for [$PROJECT] ...\n"
 		cd ..
 	fi
+	
+done
 	
 	# for i in $(find . -type d)
 	# do
 	# 	echo "$i"
 	# done
 
-echo "Done commiting for project [$PROJECT]"
+#echo "Done commiting for project [$PROJECT]"
