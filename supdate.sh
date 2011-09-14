@@ -47,6 +47,7 @@ read p
 		git stash
 		git svn rebase
 		git stash pop
+		git flog -5 --stat
 		cd ..
 	fi
 	
