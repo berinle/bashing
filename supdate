@@ -46,8 +46,9 @@ read p
 		cd "$PROJECT"
 		git stash
 		git svn rebase
-		git stash pop
-		git flog -5 --stat
+		git stash pop -q
+		git status --short
+		git flog -3 --stat
 		cd ..
 	fi
 	
