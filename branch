@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "branch name [enter]:"
+read branch_name
+
+for i in `ls`; do
+	if [ -d "$i" ]; then
+		echo -e "\nCreating branch [$branch_name] for project [$i] ...\n"
+		cd "$i"
+		git checkout -b "$branch_name"		
+		cd ..
+	fi
+done
+
+echo -e "\n\nDONE ==> `date`"

@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "branch name [enter]:"
+read branch_name
+
+for i in `ls`; do
+	if [ -d "$i" ]; then
+		echo -e "\Deleting branch $branch_name for project [$i] ...\n"
+		cd "$i"
+		git stash
+		git checkout master
+		git branch -d "$branch_name"
+		git stash pop -q
+		cd ..
+	fi
+done
+
+echo -e "\n\nDONE ==> `date`"
